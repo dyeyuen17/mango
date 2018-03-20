@@ -4,6 +4,7 @@
                              phoenix,postgrex,phoenix_ecto]},
               {description,"mango"},
               {modules,['Elixir.Mango','Elixir.Mango.Application',
+                        'Elixir.Mango.Catalog','Elixir.Mango.Catalog.Product',
                         'Elixir.Mango.DataCase','Elixir.Mango.Repo',
                         'Elixir.MangoWeb','Elixir.MangoWeb.ChannelCase',
                         'Elixir.MangoWeb.ConnCase','Elixir.MangoWeb.Endpoint',
