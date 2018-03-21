@@ -22,11 +22,11 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:user_id]
 
-config :hound,
-  driver: "phantom-js",
-  host: "http://localhost",
-  port: 8910,
-  path_prefix: "wd/hub/"
+# config :hound,
+#   driver: "selenium",
+#   host: "http://localhost",
+#   port: 8910,
+#   path_prefix: "wd/hub/"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
