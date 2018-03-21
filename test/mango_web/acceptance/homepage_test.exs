@@ -5,6 +5,17 @@ defmodule MangoWeb.Acceptance.HomepageTest do
 
   hound_session()
 
+  setup do
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Mango.Repo)
+    Ecto.Adapters.SQL.Sandbox.mode(Mango.Repo, {:shared, self()})
+
+    alias Mango.Repo
+    alias Mango.Catalog.Product
+    Repo.insert %Product{name: "Tomato", price: 50, is_seasonal: false}
+    Repo.insert %Product{name: "Apple", price: 100, is_seasonal: true}
+    :ok
+  end
+
   test "presence of seasonal products" do
     ## GIVEN ##
     # There are two products Apple and Tomato price 100 and 50 respectively
