@@ -3,7 +3,14 @@
 /db
 /deps
 /*.ez
+
 /.elixir_ls
+
+.elixir_ls
+
+.elixir_ls/
+
+.elixir_ls/build
 
 # Generated on crash by the VM
 erl_crash.dump
