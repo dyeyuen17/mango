@@ -6,7 +6,8 @@ config :mango, MangoWeb.Endpoint,
   http: [port: 4001],
   server: true
 
-  config :hound, driver: "phantomjs"
+config :hound, driver: "selenium"
+config :hound, browser: "chrome"
 
 # Print only warnings and errors during test
 config :logger, level: :warn
