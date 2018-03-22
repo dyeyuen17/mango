@@ -116,3 +116,7 @@ body {
 .admin-login {
   margin-top: 16rem;
 }
+
+.form-group span.help-block{
+  color: #cc5858;
+}
