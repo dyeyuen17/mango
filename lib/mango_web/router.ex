@@ -9,12 +9,17 @@ defmodule MangoWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :customer do
+    plug MangoWeb.Plugs.LoadCustomer
+    plug MangoWeb.Plugs.FetchCart
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
 
   scope "/", MangoWeb do
-    pipe_through :browser # Use the default browser stack
+    pipe_through [:browser, :customer] # Use the default browser stack
 
     get "/", PageController, :index
     get("/categories/:name", CategoryController, :show)
@@ -22,6 +27,12 @@ defmodule MangoWeb.Router do
     get("/register", RegistrationController, :new)
     post("/register", RegistrationController, :create)
 
+    get("/login", SessionController, :new)
+    post("/login", SessionController, :create)
+    get("/logout", SessionController, :delete)
+
+    post("/cart", CartController, :add)
+    get("/cart", CartController, :show)
   end
 
   # Other scopes may use custom stacks.
