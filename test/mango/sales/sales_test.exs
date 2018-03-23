@@ -3,6 +3,7 @@ defmodule Mango.SalesTest do
 
   alias Mango.{Sales, Repo}
   alias Mango.Sales.Order
+  alias Mango.Catalog.Product
 
   test "create_cart" do
     assert %Order{status: "In Cart"} = Sales.create_cart
