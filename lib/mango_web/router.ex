@@ -33,6 +33,7 @@ defmodule MangoWeb.Router do
 
     post("/cart", CartController, :add)
     get("/cart", CartController, :show)
+    patch("/cart", CartController, :update)
     put("/cart", CartController, :update)
   end
 
