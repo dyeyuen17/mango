@@ -22,8 +22,6 @@ defmodule MangoWeb.CartController do
 
   def update(conn, %{"order" => cart_params}) do
     cart = conn.assigns.cart
-    require IEx
-    IEx.pry()
     case Sales.update_cart(cart, cart_params) do
       {:ok, _} ->
         conn
