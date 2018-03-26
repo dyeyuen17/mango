@@ -14,6 +14,10 @@ defmodule MangoWeb.Router do
     plug MangoWeb.Plugs.FetchCart
   end
 
+  pipeline :auth do
+    plug MangoWeb.Plugs.AuthenticateCustomer
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -29,12 +33,20 @@ defmodule MangoWeb.Router do
 
     get("/login", SessionController, :new)
     post("/login", SessionController, :create)
-    get("/logout", SessionController, :delete)
 
     post("/cart", CartController, :add)
     get("/cart", CartController, :show)
     patch("/cart", CartController, :update)
     put("/cart", CartController, :update)
+
+  end
+
+  scope "/", MangoWeb do
+    pipe_through [:browser, :customer, :auth]
+
+    get("/logout", SessionController, :delete)
+    get("/checkout", CheckoutController, :edit)
+    put("/checkout/confirm", CheckoutController, :update)
   end
 
   # Other scopes may use custom stacks.
